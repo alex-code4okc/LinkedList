@@ -64,3 +64,5 @@ class LinkedList(object):
 # TODO: RemoveLast method to return the last Node item
 
 # TODO: IsEmpty method returns True or False depending on if list is empty
+    def IsEmpty(self):
+        return self.count == 0
