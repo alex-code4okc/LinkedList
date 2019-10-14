@@ -62,7 +62,25 @@ class LinkedList(object):
 # TODO: RemoveFirst method to return the first Node item
 
 # TODO: RemoveLast method to return the last Node item
+    def removeLast(self):
+        if(self.isEmpty()):
+            print("List is empty! Cannot remove anymore elemnents.")
+        else:
+            # list is not empty
+            if(self.Count() == 1):
+                # head and tail node point to the same node
+                self.head.next_node = None
+                self.tail.prev_node = None
+                self.count -= 1
+            else:
+                # list has more than 1 node
+                temp = self.tail.prev_node
+                new_last_node = temp.prev_node
+                self.tail.prev_node = new_last_node
+                new_last_node.next_node = None
+                temp.prev_node = None
+                self.count -= 1            
 
-# TODO: IsEmpty method returns True or False depending on if list is empty
-    def IsEmpty(self):
+
+    def isEmpty(self):
         return self.count == 0
