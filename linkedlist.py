@@ -55,16 +55,32 @@ class LinkedList(object):
         
             return accumulator
 
-# TODO: Add RemoveFrom method to remove a node from specified index
 
 # TODO: InsertInto method to insert Node into 
 
 # TODO: RemoveFirst method to return the first Node item
 
+# TODO: Add RemoveFrom method to remove a node from specified index
+    def removeFirst(self):
+        if(self.isEmpty()):
+            print("List is empty! No elements to remove.")
+        else:
+            # list is not empty
+            if(self.Count() == 1):
+                self.head.next_node = None
+                self.tail.prev_node = None
+            else:
+                # list contains more than 1 node
+                temp = self.head.next_node
+                new_first_node = temp.next_node
+                self.head.next_node = new_first_node
+                new_first_node.prev_node = None
+                temp.next_node = None
+                self.count -= 1
 # TODO: RemoveLast method to return the last Node item
     def removeLast(self):
         if(self.isEmpty()):
-            print("List is empty! Cannot remove anymore elemnents.")
+            print("List is empty! No elements to remove.")
         else:
             # list is not empty
             if(self.Count() == 1):
