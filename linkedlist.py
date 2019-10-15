@@ -29,6 +29,18 @@ class LinkedList(object):
             self.tail.prev_node = node # tail prev_node now points to new node
             self.count += 1
 
+    def insertFirst(self,item):
+        node = self.Node(item)
+        if(self.isEmpty()):
+            self.head.next_node = node
+            self.tail.prev_node = node
+            self.count += 1
+        else:
+            temp_node = self.head.next_node
+            self.head.next_node = node
+            node.next_node = temp_node
+            temp_node.prev_node = node
+            self.count += 1
 
     def getFirst(self):
         if(self.count == 0):
