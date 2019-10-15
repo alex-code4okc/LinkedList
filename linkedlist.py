@@ -84,23 +84,26 @@ class LinkedList(object):
         if(self.isEmpty()):
             self.insertLast(item) # first item in the list
         elif(index == 0):
-            # TODO: create insertFirst method
-            pass
+            self.insertFirst(item)
         elif(index == -1):
             self.insertLast(item)
         elif(index == self.Count()):
             self.insertLast(item) # insertLast will insertLast to the end of the list
         elif(index < self.Count()):
+            node = self.Node(item)
             current_index = 0
             current_node = self.head.next_node
             while(current_node.next_node is not None):
                 current_index += 1
                 current_node = current_node.next_node
-
                 if(index == current_index):
-
+                    temp_node = current_node
+                    temp_node.prev_node.next_node = node
+                    node.prev_node = temp_node.prev_node
+                    node.next_node = temp_node
+                    temp_node.prev_node = node
         else:
-            print("Attempted to insertLast beyond the length of the list")
+            print("Attempted to element beyond the length of the list")
 
 # TODO: Add RemoveFrom method to remove a node from specified index
 
