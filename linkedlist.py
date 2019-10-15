@@ -9,24 +9,26 @@ class LinkedList(object):
             self.next_node = next_node
 
     def __init__(self):
-        self.linkedlist = []
         self.head = self.Node(None)
         self.tail = self.Node(None)
         #self.current = Node(None)
         self.count = 0
 
-    def insert(self,item):
-        # insert will always append to end of linked list
+    def insertLast(self,item):
+        # insertLast will always append to end of linked list
         node = self.Node(item)
-        self.count += 1
-        # if self.tail.prev_node points to None the linked list was empty and this insert is the first
+        
+        # if self.tail.prev_node points to None the linked list was empty and this insertLast is the first
         if(self.tail.prev_node is None):
             self.head.next_node = node
             self.tail.prev_node = node
-        else: # this insert is not the first, tail points to a node
+            self.count += 1
+        else: # this insertLast is not the first, tail points to a node
             self.tail.prev_node.next_node = node # previous last node now points its next_node to new node
             node.prev_node = self.tail.prev_node # new node prev_node now points to the previous last node
             self.tail.prev_node = node # tail prev_node now points to new node
+            self.count += 1
+
 
     def getFirst(self):
         if(self.count == 0):
@@ -56,11 +58,41 @@ class LinkedList(object):
             return accumulator
 
 
-# TODO: InsertInto method to insert Node into 
+# TODO: InsertInto method to insertLast Node into 
+    def insertInto(self,item,index):
+        '''
+            Inserts element into the nth index (zero based index). 
+            If list is empty, element will be inserted at the head/tail.
+            0 index will insert at the head.
+            -1 index will insert at the tail.
+            index must be less than or equal to the number of currently linked nodes.
+            If equal to the number of linked nodes, element is inserted at the end of the list.
+            if the index is larger than the number of currently linked nodes, the node is not inserted.
+        '''
+        if(self.isEmpty()):
+            self.insertLast(item) # first item in the list
+        elif(index == 0):
+            # TODO: create insertFirst method
+            pass
+        elif(index == -1):
+            self.insertLast(item)
+        elif(index == self.Count()):
+            self.insertLast(item) # insertLast will insertLast to the end of the list
+        elif(index < self.Count()):
+            current_index = 0
+            current_node = self.head.next_node
+            while(current_node.next_node is not None):
+                current_index += 1
+                current_node = current_node.next_node
 
-# TODO: RemoveFirst method to return the first Node item
+                if(index == current_index):
+
+        else:
+            print("Attempted to insertLast beyond the length of the list")
 
 # TODO: Add RemoveFrom method to remove a node from specified index
+
+# TODO: RemoveFirst method to return the first Node item
     def removeFirst(self):
         if(self.isEmpty()):
             print("List is empty! No elements to remove.")
