@@ -1,5 +1,5 @@
 # LinkedList
-A LinkedList implementation in Python. Implements two sentinel nodes, head and tail which alwas point to the beginning and end of the list.
+A LinkedList implementation in Python. Implements two sentinel nodes, head and tail which always point to the beginning and end of the list.
 ## Methods
 
 ### isEmpty()
